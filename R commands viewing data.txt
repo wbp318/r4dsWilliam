@@ -1,0 +1,169 @@
+In R, there are several commands you can use to explore and understand your dataset beyond `head()` and `summary()`. Here's a list of some useful commands along with explanations and examples of how to use them:
+
+### 1. `str()`
+Displays the structure of the dataset, including data types and sample values.
+```R
+str(data)
+```
+
+### 2. `glimpse()` from `dplyr`
+Provides a transposed view of the `str()` function, which can sometimes be easier to read for larger datasets.
+```R
+library(dplyr)
+glimpse(data)
+```
+
+### 3. `dim()`
+Returns the dimensions of the dataset (number of rows and columns).
+```R
+dim(data)
+```
+
+### 4. `nrow()` and `ncol()`
+Returns the number of rows and columns, respectively.
+```R
+nrow(data)
+ncol(data)
+```
+
+### 5. `names()` or `colnames()`
+Displays the names of the columns in the dataset.
+```R
+names(data)
+colnames(data)
+```
+
+### 6. `rownames()`
+Displays the names of the rows in the dataset.
+```R
+rownames(data)
+```
+
+### 7. `tail()`
+Displays the last few rows of the dataset (default is 6 rows).
+```R
+tail(data)
+```
+
+### 8. `view()`
+Opens a spreadsheet-like viewer in RStudio for visual inspection (only in RStudio).
+```R
+View(data)
+```
+
+### 9. `print()`
+Prints the entire dataset to the console (useful for small datasets).
+```R
+print(data)
+```
+
+### 10. `summary()` (Already Mentioned)
+Provides a summary of each column, including statistics for numeric columns and counts for factor columns.
+```R
+summary(data)
+```
+
+### 11. `unique()`
+Displays the unique values in a specific column.
+```R
+unique(data$column_name)
+```
+
+### 12. `table()`
+Creates a contingency table of the counts of the unique values in a column.
+```R
+table(data$column_name)
+```
+
+### 13. `anyNA()`
+Checks if there are any missing values in the dataset.
+```R
+anyNA(data)
+```
+
+### 14. `is.na()`
+Identifies the locations of missing values in the dataset.
+```R
+is.na(data)
+```
+
+### 15. `which()`
+Returns the indices of TRUE values in a logical vector (useful with `is.na()`).
+```R
+which(is.na(data))
+```
+
+### 16. `summarytools::dfSummary()` from `summarytools`
+Provides a detailed summary of the dataset, including the number of missing values, unique values, and frequency distributions for categorical data.
+```R
+library(summarytools)
+dfSummary(data)
+```
+
+### Example Workflow
+
+Here’s an example workflow using these commands to explore a dataset:
+
+```R
+# Load necessary libraries
+library(dplyr)
+library(summarytools)
+
+# Load the dataset
+data <- read.csv("data/01-sales.csv")
+
+# Display the first few rows
+head(data)
+
+# Display the last few rows
+tail(data)
+
+# Display the structure of the dataset
+str(data)
+
+# Get a transposed view of the structure
+glimpse(data)
+
+# Get the dimensions of the dataset
+dim(data)
+
+# Get the number of rows and columns
+nrow(data)
+ncol(data)
+
+# Get the column names
+names(data)
+colnames(data)
+
+# Get the row names
+rownames(data)
+
+# Print the entire dataset (only for small datasets)
+print(data)
+
+# Provide a summary of the dataset
+summary(data)
+
+# View the dataset in a spreadsheet-like viewer (RStudio only)
+# View(data)
+
+# Get the unique values in a specific column
+unique(data$brand)
+
+# Create a contingency table of the counts of unique values in a column
+table(data$brand)
+
+# Check if there are any missing values
+anyNA(data)
+
+# Identify the locations of missing values
+is.na(data)
+
+# Get the indices of missing values
+which(is.na(data))
+
+# Provide a detailed summary of the dataset
+dfSummary(data)
+```
+
+These commands should give you a comprehensive overview of your dataset and help you understand its structure, contents, and any potential issues such as missing values.
